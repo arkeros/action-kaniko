@@ -89,6 +89,8 @@ EOF
 # https://github.com/GoogleContainerTools/kaniko/issues/1349
 /kaniko/executor --reproducible --force $ARGS
 
+echo "$ARGS"
+
 if [ ! -z $INPUT_SKIP_UNCHANGED_DIGEST ]; then
     export DIGEST=$(cat digest)
 
