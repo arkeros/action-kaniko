@@ -74,6 +74,7 @@ else
 fi
 
 export ARGS="$CACHE $CONTEXT $DOCKERFILE $TARGET $DESTINATION $INPUT_EXTRA_ARGS"
+echo "$ARGS"
 
 cat <<EOF >/kaniko/.docker/config.json
 {
@@ -88,8 +89,6 @@ EOF
 
 # https://github.com/GoogleContainerTools/kaniko/issues/1349
 /kaniko/executor --reproducible --force $ARGS
-
-echo "$ARGS"
 
 if [ ! -z $INPUT_SKIP_UNCHANGED_DIGEST ]; then
     export DIGEST=$(cat digest)
