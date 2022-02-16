@@ -48,6 +48,15 @@ fi
 if [ "$REGISTRY" == "docker.io" ]; then
     export REGISTRY="index.${REGISTRY}/v1/"
 else
+    IMAGE_NAMESPACE=
+    export IMAGE="$REGISTRY/$IMAGE"
+
+    if [ ! -z $IMAGE_LATEST ]; then
+        export IMAGE_LATEST="$REGISTRY/$IMAGE_LATEST"
+    fi
+fi
+
+if [ "$REGISTRY" == "europe-docker.pkg.dev" ]; then
     export IMAGE="$REGISTRY/$IMAGE"
 
     if [ ! -z $IMAGE_LATEST ]; then
