@@ -56,14 +56,6 @@ else
     fi
 fi
 
-if [ "$REGISTRY" == "europe-docker.pkg.dev" ]; then
-    export IMAGE="$REGISTRY/$IMAGE"
-
-    if [ ! -z $IMAGE_LATEST ]; then
-        export IMAGE_LATEST="$REGISTRY/$IMAGE_LATEST"
-    fi
-fi
-
 export CACHE=${INPUT_CACHE:+"--cache=true"}
 export CACHE=$CACHE${INPUT_CACHE_TTL:+" --cache-ttl=$INPUT_CACHE_TTL"}
 export CACHE=$CACHE${INPUT_CACHE_REGISTRY:+" --cache-repo=$INPUT_CACHE_REGISTRY"}
